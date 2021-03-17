@@ -1,0 +1,6 @@
+module Pods_BetterCryptoAlerts_BetterCryptoAlertsTests {
+  umbrella header "Pods-BetterCryptoAlerts-BetterCryptoAlertsTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

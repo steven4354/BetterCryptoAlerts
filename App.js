@@ -16,15 +16,13 @@ import {
   Text,
   useColorScheme,
   View,
+  TouchableOpacity,
 } from 'react-native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {NativeRouter, Route, Link} from 'react-router-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import AlertBox from './src/components/AlertBox';
+import Home from './src/components/Home';
 
 const Section = ({children, title}): Node => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -57,43 +55,47 @@ const App: () => Node = () => {
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+    height: '100%',
   };
 
   return (
     <SafeAreaView style={backgroundStyle}>
       <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.js</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
+      <NativeRouter>
+      <Route exact path="/" component={Home} />
+      </NativeRouter>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  header: {
+    fontSize: 36,
+    padding: 20,
+  },
   sectionContainer: {
     marginTop: 32,
     paddingHorizontal: 24,
+  },
+  label: {
+    margin: 20,
+    fontSize: 18,
+  },
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: 10,
+    margin: 20,
+  },
+  alertBox: {
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: 10,
+    margin: 20,
+    marginTop: 0,
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    flexDirection: 'row',
   },
   sectionTitle: {
     fontSize: 24,
